@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        div#loader {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            margin: auto;
+        }
+
+        div#loader .red {
+            display: inline-block;
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+            opacity: 0.75;
+            transform-origin: 50% 50%;
+        }
+
+        div#loader .green {
+            display: inline-block;
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            top: 12.5px;
+            left: 12.5px;
+            background: green;
+            opacity: 0.75;
+            transform-origin: 50% 50%;
+        }
+
+        div#loader .blue {
+            display: inline-block;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 25px;
+            left: 25px;
+            background: blue;
+            transform-origin: 50% 50%;
+        }
+
+        .rotate_red {
+            animation: rotating 5s linear infinite;
+        }
+
+        .rotate_green {
+            animation: rotating 4s linear infinite;
+        }
+
+        .rotate_blue {
+            animation: rotating 3s linear infinite;
+        }
+
+        @keyframes rotating {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="loader" class="loading">
+	<div class="red"></div>
+	<div class="green"></div>
+	<div class="blue"></div>
+</div>
+
+<input type="button" id="button" value="load">
+
+<script>
+	var loader = document.getElementById("loader");
+	var button = document.getElementById("button");
+	var red = document.querySelector('div#loader .red');
+	var green = document.querySelector('div#loader .green');
+	var blue = document.querySelector('div#loader .blue');
+
+	function randomColor() {
+		return '#'+Math.random().toString(16).substr(-6);
+	}
+
+	function redRandom() {
+		red.style.backgroundColor = randomColor();
+	}
+
+	function greenRandom() {
+		green.style.backgroundColor = randomColor();
+	}
+
+	function blueRandom() {
+		blue.style.backgroundColor = randomColor();
+	}
+
+	function redFix() {
+		red.style.backgroundColor = "red";
+	}
+
+	function greenFix() {
+		green.style.backgroundColor = "green";
+	}
+
+	function blueFix() {
+		blue.style.backgroundColor = "blue";
+	}
+
+	button.addEventListener("click", function() {
+		if (loader.className === "loading" ) {
+			loader.className="";
+			red.classList.add("rotate_red");
+			green.classList.add("rotate_green");
+			blue.classList.add("rotate_blue");
+			setInterval(redRandom, 5000);
+			setInterval(greenRandom, 4000);
+			setInterval(blueRandom, 3000);
+		} else {
+			loader.className="loading";
+			red.classList.remove("rotate_red");
+			green.classList.remove("rotate_green");
+			blue.classList.remove("rotate_blue");
+			setInterval(redFix, 1);
+			setInterval(greenFix, 1);
+			setInterval(blueFix, 1);
+		}
+	});
+</script>
+
+</body>
+</html> 

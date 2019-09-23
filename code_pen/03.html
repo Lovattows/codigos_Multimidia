@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.one {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 1s;
+    transition-timing-function: linear;
+}
+
+div.two {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    transition: width 1s;
+    transition-delay: 1s;
+    transition-timing-function: linear;
+}
+
+div#main:hover .one  {
+    width: 300px;
+}
+
+div#main:hover .two  {
+    width: 300px;
+
+}
+</style>
+</head>
+<body>
+<div id="main">
+<div class="one"></div><br>
+<div class="two"></div>
+</div>
+</body>
+</html>
