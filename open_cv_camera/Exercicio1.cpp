@@ -17,7 +17,7 @@ int main()
 
 	VideoCapture capture(samples::findFile("Atividade1.avi"));
 
-	Mat src, nobg, dc;
+	Mat src, nobg;
 	while (true) {
 		capture >> src;
 
