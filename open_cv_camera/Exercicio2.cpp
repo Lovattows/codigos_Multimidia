@@ -30,7 +30,7 @@ int main()
 
 		imshow(name, resultado);
 
-		key = waitKey();
+		key = waitKey(60);
 	} while ((char)key != 27);
 
 	waitKey();
